@@ -19,16 +19,18 @@
 ├── _config.yml                 # Jekyllと公開対象の設定
 ├── _prompts/                   # 1プロンプト＝1 Markdown（分類別に分けない）
 ├── _data/
-│   └── tags.yml                # タグID、表示名、分類、検索別名
+│   ├── tags.yml                # タグID、表示名、分類、検索別名
+│   └── search_synonyms.yml     # キーワード検索の日本語・英語同義語
 ├── _includes/
 │   └── prompt-card.html        # Markdownをカードへ変換する共通テンプレート
 ├── _layouts/
 │   └── default.html            # 全体HTML
 ├── assets/
 │   ├── css/site.css            # 表示とレスポンシブ対応
-│   └── js/catalog.js           # 検索、URL同期、コピー
+│   └── js/catalog.js           # 検索、URL同期、段階表示、コピー
 ├── scripts/
-│   └── validate_content.rb     # Front Matter、ID、タグ、本文の検証
+│   ├── validate_content.rb     # Front Matter、ID、タグ、同義語、本文の検証
+│   └── verify_site.rb          # 生成後HTMLの件数、ID、参照、フックの検証
 ├── templates/
 │   └── prompt.md               # 新規原稿の雛形
 ├── .github/workflows/
@@ -91,7 +93,7 @@ bundle exec jekyll build --baseurl /suno-arrange-prompts
 ruby scripts/verify_site.rb _site /suno-arrange-prompts
 ```
 
-検証は未知タグ、重複prompt ID、重複slug、ファイル名不一致、日付不正、BPM範囲外、本文形式不正、本文の1000文字超過に加え、生成後のカード件数、HTML ID、ARIA参照、コピー参照、プロジェクトサイト配下のアセットURLも確認します。
+検証は未知タグ、重複prompt ID、重複slug、ファイル名不一致、日付不正、BPM範囲外、本文形式不正、本文の1000文字超過、同義語の重複に加え、生成後のカード件数、HTML ID、ARIA参照、コピー参照、同義語JSON、JavaScript用フック、プロジェクトサイト配下のアセットURLも確認します。
 
 ## タグを追加する
 
@@ -113,13 +115,31 @@ ruby scripts/verify_site.rb _site /suno-arrange-prompts
 - 別タグ間で `label` と `aliases` を重複させません。
 - 既存IDを別の意味へ再利用しません。
 
+## 同義語を追加する
+
+`_data/search_synonyms.yml` は、日本語のキーワードで英語プロンプト本文を探すための同義語グループです。同じ `terms` に含まれる語は相互に展開され、どれか1語が一致すればヒットします。
+
+```yaml
+- terms: [リバーブ, 残響, reverb]
+```
+
+- 語に空白を含めません。比較はNFKC正規化と小文字化のうえで部分一致です。
+- 同じ語を複数のグループに書きません。検証で重複を検出します。
+- タグの `label` と `aliases` はすでに検索対象なので、ここには本文の英語表現との橋渡しだけを書きます。
+
 ## 検索仕様
 
 - キーワードはタイトル、説明、BPM、英語プロンプト、タグID、表示名、別名を対象に部分一致します。
 - 入力値はNFKC正規化と小文字化を行います。空白で区切った複数語はAND条件です。
+- 各語は `_data/search_synonyms.yml` の同義語グループで展開されます。「ピアノ」は `piano` を含む本文にも一致します。
+- 2〜3桁の数字だけの語はBPMとして扱い、`bpm` または `bpm_range` の±4以内に一致します。本文中の数字は前後に数字が続かない場合だけ一致します（`84` は `184` に一致しません）。
 - 同じ分類で複数タグを選ぶとOR、異なる分類をまたぐとANDです。
 - 条件は `?q=ピアノ&tag=vocal&tag=gradual-build` の形式でURLへ保存され、再読込・共有・戻る操作で復元されます。
 - 未知のタグIDがURLに含まれていても無視します。
+- 一覧は一致した順に24件ずつ表示し、「さらに表示」で追加します。条件を変えると先頭24件へ戻ります。
+- 検索欄、件数、選択中タグは画面上部に固定表示され、タグ分類は `<details>` で折りたたまれます。分類内のタグは件数の多い順です。
+- 260文字を超えるプロンプト本文は折りたたみ、「全文を表示」で展開します。コピーは折りたたみ中でも全文を対象にします。
+- JavaScriptが無効な場合は検索UIを出さず、全件を展開した状態で表示します。
 
 ## ローカルで確認する
 

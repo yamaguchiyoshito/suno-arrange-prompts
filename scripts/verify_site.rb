@@ -1,6 +1,7 @@
 #!/usr/bin/env ruby
 # frozen_string_literal: true
 
+require 'json'
 require 'pathname'
 require 'yaml'
 
@@ -36,7 +37,7 @@ ids = html.scan(/\sid="([^"]+)"/).flatten
 duplicate_ids = ids.group_by(&:itself).select { |_id, values| values.length > 1 }.keys
 errors << "duplicate HTML ids: #{duplicate_ids.join(', ')}" unless duplicate_ids.empty?
 
-references = html.scan(/\s(?:aria-labelledby|aria-describedby|data-copy-target)="([^"]+)"/)
+references = html.scan(/\s(?:aria-labelledby|aria-describedby|aria-controls|data-copy-target|data-expand-target)="([^"]+)"/)
   .flatten
   .flat_map { |value| value.split(/\s+/) }
 missing_references = references.uniq.reject { |reference| ids.include?(reference) }
@@ -47,6 +48,22 @@ rendered_tags = html.scan(/\sdata-tag="([^"]+)"/).flatten.uniq.sort
 errors << "filter tags differ: expected #{expected_tags.inspect}, found #{rendered_tags.inspect}" unless rendered_tags == expected_tags
 
 errors << 'unresolved Liquid markup remains in index.html' if html.match?(/\{[{%].*?[}%]\}/m)
+
+synonym_json = html[%r{<script type="application/json" id="search-synonyms">(.*?)</script>}m, 1]
+if synonym_json.nil?
+  errors << 'missing search-synonyms JSON script'
+else
+  begin
+    synonym_groups = JSON.parse(synonym_json)
+    errors << 'search-synonyms JSON must be a non-empty array' unless synonym_groups.is_a?(Array) && !synonym_groups.empty?
+  rescue JSON::ParserError => e
+    errors << "search-synonyms JSON is invalid: #{e.message}"
+  end
+end
+
+%w[data-show-more data-show-more-button data-active-filters data-filter-group].each do |hook|
+  errors << "missing #{hook} hook in index.html" unless html.include?(hook)
+end
 
 asset_prefix = "#{BASEURL}/assets/".gsub(%r{/+}, '/')
 %w[css/site.css js/catalog.js favicon.svg].each do |asset|

@@ -8,6 +8,7 @@ require 'yaml'
 ROOT = Pathname.new(__dir__).join('..').expand_path
 PROMPT_DIR = ROOT.join('_prompts')
 TAG_FILE = ROOT.join('_data', 'tags.yml')
+SYNONYM_FILE = ROOT.join('_data', 'search_synonyms.yml')
 
 REQUIRED_FIELDS = %w[
   schema_version prompt_id slug title description bpm vocals tags tip_label tip
@@ -94,6 +95,40 @@ tag_rows.each_with_index do |tag, index|
   end
 
   tags_by_id[id] = tag
+end
+
+begin
+  synonym_rows = YAML.safe_load(SYNONYM_FILE.read, permitted_classes: [], aliases: false)
+rescue StandardError => e
+  abort "ERROR: #{SYNONYM_FILE.relative_path_from(ROOT)}: #{e.message}"
+end
+
+abort 'ERROR: _data/search_synonyms.yml must contain a YAML array.' unless synonym_rows.is_a?(Array)
+
+synonym_terms = {}
+synonym_rows.each_with_index do |group, index|
+  location = "_data/search_synonyms.yml entry #{index + 1}"
+  unless group.is_a?(Hash) && group.keys == ['terms']
+    errors << "#{location}: must be a map with only a terms key"
+    next
+  end
+
+  terms = group['terms']
+  unless terms.is_a?(Array) && terms.length >= 2 && terms.all? { |term| term.is_a?(String) }
+    errors << "#{location}: terms must list at least two strings"
+    next
+  end
+
+  terms.each do |term|
+    key = normalized(term)
+    errors << "#{location}: term #{term.inspect} must not be blank" if key.empty?
+    errors << "#{location}: term #{term.inspect} must not contain spaces" if key.include?(' ')
+    if synonym_terms.key?(key) && synonym_terms[key] != index
+      errors << "#{location}: term #{term.inspect} already appears in entry #{synonym_terms[key] + 1}"
+    else
+      synonym_terms[key] = index
+    end
+  end
 end
 
 prompt_files = PROMPT_DIR.glob('*.md').sort

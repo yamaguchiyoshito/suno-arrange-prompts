@@ -12,6 +12,13 @@
 {% else %}
   {% assign tempo_label = 'BPM指定なし' %}
 {% endif %}
+{% if prompt.bpm %}
+  {% capture bpm_attr %}{{ prompt.bpm }}{% endcapture %}
+{% elsif prompt.bpm_range %}
+  {% capture bpm_attr %}{{ prompt.bpm_range.first }}-{{ prompt.bpm_range.last }}{% endcapture %}
+{% else %}
+  {% assign bpm_attr = '' %}
+{% endif %}
 {% assign category_label = '' %}
 {% for tag_id in prompt.tags %}
   {% assign taxonomy_tag = site.data.tags | where: 'id', tag_id | first %}
@@ -32,6 +39,7 @@
   data-prompt-card
   data-prompt-id="{{ prompt.prompt_id }}"
   data-tags="{{ prompt.tags | join: ' ' }}"
+  data-bpm="{{ bpm_attr }}"
   data-search="{{ searchable_text | strip_html | strip_newlines | escape }}"
 >
   <div class="card-head">
@@ -56,6 +64,14 @@
   <div class="prompt-area">
     <span class="prompt-label">STYLE PROMPT</span>
     <div class="prompt-text" id="prompt-{{ prompt.prompt_id }}" lang="en">{{ prompt.content | markdownify }}</div>
+    <button
+      class="expand"
+      type="button"
+      data-expand-target="prompt-{{ prompt.prompt_id }}"
+      aria-controls="prompt-{{ prompt.prompt_id }}"
+      aria-expanded="false"
+      hidden
+    >全文を表示</button>
   </div>
   <div class="card-foot">
     <p class="tip"><strong>{{ prompt.tip_label }}：</strong>{{ prompt.tip }}</p>
