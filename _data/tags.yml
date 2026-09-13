@@ -1,0 +1,934 @@
+# Markdownにはlabelではなく不変のidを記述します。
+# 表示名の変更はこのファイルだけで行い、既存idは再利用しません。
+
+- id: stuts
+  label: STUTS
+  group: producer
+  group_label: 着想元プロデューサー
+  aliases: [スタッツ, STUTS beats]
+- id: bachlogic
+  label: BACHLOGIC
+  group: producer
+  group_label: 着想元プロデューサー
+  aliases: [Bach Logic, バックロジック]
+- id: muro
+  label: MURO
+  group: producer
+  group_label: 着想元プロデューサー
+  aliases: [DJ MURO, "King of Diggin'", ムロ]
+- id: hispec
+  label: Hi'Spec
+  group: producer
+  group_label: 着想元プロデューサー
+  aliases: [Hi Spec, ハイスペック]
+- id: dj-watarai
+  label: DJ WATARAI
+  group: producer
+  group_label: 着想元プロデューサー
+  aliases: [Watarai, DJワタライ]
+- id: evisbeats
+  label: EVISBEATS
+  group: producer
+  group_label: 着想元プロデューサー
+  aliases: [Evis Beats, エビスビーツ]
+- id: mabanua
+  label: mabanua
+  group: producer
+  group_label: 着想元プロデューサー
+  aliases: [マバヌア]
+- id: nujabes
+  label: Nujabes
+  group: producer
+  group_label: 着想元プロデューサー
+  aliases: [ヌジャベス, 瀬葉淳]
+- id: 16flip
+  label: 16FLIP
+  group: producer
+  group_label: 着想元プロデューサー
+  aliases: [16 Flip, シックスティーンフリップ]
+- id: mass-hole
+  label: MASS-HOLE
+  group: producer
+  group_label: 着想元プロデューサー
+  aliases: [Mass Hole, マスホール]
+- id: dj-hasebe
+  label: DJ HASEBE
+  group: producer
+  group_label: 着想元プロデューサー
+  aliases: [OLD NICK, DJ長谷部, ハセベ]
+- id: dj-pmx
+  label: DJ PMX
+  group: producer
+  group_label: 着想元プロデューサー
+  aliases: [PMX, ディージェー・ピーエムエックス]
+- id: doooo
+  label: doooo
+  group: producer
+  group_label: 着想元プロデューサー
+  aliases: [ドゥー]
+- id: aru-2
+  label: Aru-2
+  group: producer
+  group_label: 着想元プロデューサー
+  aliases: [Arμ-2, Aru2, アルツー]
+- id: sweet-william
+  label: Sweet William
+  group: producer
+  group_label: 着想元プロデューサー
+  aliases: [スウィート・ウィリアム]
+- id: toshiki-hayashi-c
+  label: TOSHIKI HAYASHI(%C)
+  group: producer
+  group_label: 着想元プロデューサー
+  aliases: [Toshiki Hayashi, "%C", トシキ・ハヤシ]
+- id: dl-dev-large
+  label: D.L / DEV LARGE
+  group: producer
+  group_label: 着想元プロデューサー
+  aliases: [D.L, Dev Large, デヴ・ラージ]
+- id: grooveman-spot
+  label: grooveman Spot
+  group: producer
+  group_label: 着想元プロデューサー
+  aliases: [Grooveman Spot, DJ KOU-G, グルーヴマン・スポット]
+- id: dj-yas
+  label: DJ YAS
+  group: producer
+  group_label: 着想元プロデューサー
+  aliases: [YAS, DJヤス]
+- id: tsutchie
+  label: tsutchie
+  group: producer
+  group_label: 着想元プロデューサー
+  aliases: [TSUTCHIE, ツッチー]
+
+- id: warp-records
+  label: Warp Records
+  group: source
+  group_label: 着想元レーベル
+  aliases: [Warp Record, warp label, ワープ・レコーズ, ワープ]
+- id: sub-pop-records
+  label: Sub Pop Records
+  group: source
+  group_label: 着想元レーベル
+  aliases: [Sub Pop Record, sub pop label, サブ・ポップ, サブポップ]
+
+- id: ninja-tune
+  label: Ninja Tune
+  group: source
+  group_label: 着想元レーベル
+  aliases: [Ninja Tune label, ニンジャ・チューン, ニンジャチューン]
+- id: hyperdub
+  label: Hyperdub
+  group: source
+  group_label: 着想元レーベル
+  aliases: [Hyperdub Records, Hyperdub label, ハイパーダブ]
+- id: stones-throw-records
+  label: Stones Throw Records
+  group: source
+  group_label: 着想元レーベル
+  aliases: [Stones Throw, Stones Throw label, ストーンズ・スロウ, ストーンズスロウ]
+- id: mute-records
+  label: Mute Records
+  group: source
+  group_label: 着想元レーベル
+  aliases: [Mute, Mute label, ミュート・レコード, ミュート]
+- id: 4ad
+  label: 4AD
+  group: source
+  group_label: 着想元レーベル
+  aliases: [4AD Records, 4AD label, フォーエーディー]
+- id: domino-records
+  label: Domino Recording Company
+  group: source
+  group_label: 着想元レーベル
+  aliases: [Domino Records, Domino label, ドミノ・レコーズ, ドミノ]
+- id: thrill-jockey-records
+  label: Thrill Jockey Records
+  group: source
+  group_label: 着想元レーベル
+  aliases: [Thrill Jockey, Thrill Jockey label, スリル・ジョッキー]
+- id: kranky
+  label: Kranky
+  group: source
+  group_label: 着想元レーベル
+  aliases: [Kranky Records, Kranky label, クランキー]
+- id: ecm-records
+  label: ECM Records
+  group: source
+  group_label: 着想元レーベル
+  aliases: [ECM, ECM label, ECMレコード]
+- id: international-anthem
+  label: International Anthem
+  group: source
+  group_label: 着想元レーベル
+  aliases: [International Anthem Recording Company, IARC, インターナショナル・アンセム]
+- id: jagjaguwar
+  label: Jagjaguwar
+  group: source
+  group_label: 着想元レーベル
+  aliases: [Jagjaguwar Records, Jagjaguwar label, ジャグジャグウォー]
+- id: polydor-records
+  label: Polydor Records
+  group: source
+  group_label: 着想元レーベル
+  aliases: [Polydor, Polydor label, ポリドール]
+- id: pony-canyon
+  label: Pony Canyon
+  group: source
+  group_label: 着想元レーベル
+  aliases: [Pony Canyon label, ポニーキャニオン]
+- id: mo-wax
+  label: Mo' Wax
+  group: source
+  group_label: 着想元レーベル
+  aliases: [Mo Wax, Mo' Wax Records, モ・ワックス]
+- id: ghostly-international
+  label: Ghostly International
+  group: source
+  group_label: 着想元レーベル
+  aliases: [Ghostly, Ghostly label, ゴーストリー・インターナショナル]
+- id: alpha-pup-records
+  label: Alpha Pup Records
+  group: source
+  group_label: 着想元レーベル
+  aliases: [Alpha Pup, Alpha Pup label, アルファ・パップ]
+- id: brainfeeder
+  label: Brainfeeder
+  group: source
+  group_label: 着想元レーベル
+  aliases: [Brainfeeder Records, Brainfeeder label, ブレインフィーダー]
+- id: jazzy-sport
+  label: Jazzy Sport
+  group: source
+  group_label: 着想元レーベル
+  aliases: [Jazzy Sport label, ジャジースポート]
+- id: oilworks
+  label: OILWORKS
+  group: source
+  group_label: 着想元レーベル
+  aliases: [OILWORKS Rec., Oilworks label, オイルワークス]
+- id: knowmad-records
+  label: Knowmad Records
+  group: source
+  group_label: 着想元レーベル
+  aliases: [Knowmad, Knowmad label, ノウマッド・レコーズ]
+- id: awdr-lr2
+  label: AWDR/LR2
+  group: source
+  group_label: 着想元レーベル
+  aliases: [AWDR, LR2, AWDR LR2, エーダブリューディーアール]
+- id: dogear-records
+  label: Dogear Records
+  group: source
+  group_label: 着想元レーベル
+  aliases: [DOGEAR, Dogear label, ドッグイヤー・レコーズ, ドッグイヤー]
+- id: mary-joy-recordings
+  label: Mary Joy Recordings
+  group: source
+  group_label: 着想元レーベル
+  aliases: [Mary Joy, Mary Joy Records, Mary Joy label, メアリー・ジョイ・レコーディングス, メアリージョイ]
+- id: p-vine-records
+  label: P-VINE Records
+  group: source
+  group_label: 着想元レーベル
+  aliases: [P-VINE, P-VINE label, "P-VINE, Inc.", Pヴァイン, ピー・ヴァイン]
+- id: made-day-maider
+  label: MADE DAY MAIDER
+  group: source
+  group_label: 着想元レーベル
+  aliases: [MDM, Made Day Maider label, メイド・デイ・マイダー, メイドデイマイダー]
+
+- id: city-pop
+  label: シティポップ
+  code: CITY POP
+  group: genre
+  group_label: ジャンル
+  aliases: [city pop, 都会的]
+- id: acoustic
+  label: アコースティック
+  code: ACOUSTIC
+  group: genre
+  group_label: ジャンル
+  aliases: [acoustic, folk pop, 生楽器]
+- id: piano-ballad
+  label: ピアノバラード
+  code: PIANO BALLAD
+  group: genre
+  group_label: ジャンル
+  aliases: [piano ballad, バラード]
+- id: lo-fi
+  label: Lo-fi
+  code: LO-FI
+  group: genre
+  group_label: ジャンル
+  aliases: [lofi, lo-fi hip-hop, ローファイ]
+- id: dance-pop
+  label: ダンスポップ
+  code: DANCE POP
+  group: genre
+  group_label: ジャンル
+  aliases: [dance pop, edm]
+- id: cinematic
+  label: シネマティック
+  code: CINEMATIC
+  group: genre
+  group_label: ジャンル
+  aliases: [cinematic, soundtrack, 劇伴]
+- id: minimal-electronic
+  label: ミニマル電子音
+  code: MINIMAL ELECTRONIC
+  group: genre
+  group_label: ジャンル
+  aliases: [minimal electronic, ambient electronica, ミニマルエレクトロニカ]
+- id: electronic-pop
+  label: エレクトロニックポップ
+  code: ELECTRONIC POP
+  group: genre
+  group_label: ジャンル
+  aliases: [electronic pop, synth pop, エレクトロポップ]
+- id: dream-pop
+  label: ドリームポップ
+  code: DREAM POP
+  group: genre
+  group_label: ジャンル
+  aliases: [dream pop, indie emo, インディーエモ]
+- id: indie-rock
+  label: インディーロック
+  code: INDIE ROCK
+  group: genre
+  group_label: ジャンル
+  aliases: [indie rock, alternative rock, オルタナティブロック]
+- id: indie-pop
+  label: インディーポップ
+  code: INDIE POP
+  group: genre
+  group_label: ジャンル
+  aliases: [indie pop, jangly pop, ギターポップ]
+- id: j-pop
+  label: J-POP
+  code: J-POP
+  group: genre
+  group_label: ジャンル
+  aliases: [jpop, japanese pop, 邦楽ポップ]
+- id: experimental-pop
+  label: エクスペリメンタルポップ
+  code: EXPERIMENTAL POP
+  group: genre
+  group_label: ジャンル
+  aliases: [experimental pop, art pop, 実験的ポップ]
+- id: dub
+  label: ダブ
+  code: DUB
+  group: genre
+  group_label: ジャンル
+  aliases: [dub reggae, dub music, ダブレゲエ]
+- id: uk-garage
+  label: UKガラージ
+  code: UK GARAGE
+  group: genre
+  group_label: ジャンル
+  aliases: [uk garage, future garage, ガラージ]
+- id: process-minimal
+  label: プロセス・ミニマル
+  code: PROCESS MINIMAL
+  group: genre
+  group_label: ジャンル
+  aliases: [process music, minimalist process, プロセス音楽]
+- id: math-rock
+  label: マスロック
+  code: MATH ROCK
+  group: genre
+  group_label: ジャンル
+  aliases: [math rock, interlocking rock, 数理的ロック]
+- id: trip-hop
+  label: トリップホップ
+  code: TRIP-HOP
+  group: genre
+  group_label: ジャンル
+  aliases: [trip hop, downtempo trip-hop, ブリストルサウンド]
+- id: new-wave
+  label: ニューウェーブ
+  code: NEW WAVE
+  group: genre
+  group_label: ジャンル
+  aliases: [new wave, post-punk funk, ニュー・ウェイヴ]
+- id: neo-soul
+  label: ネオソウル
+  code: NEO SOUL
+  group: genre
+  group_label: ジャンル
+  aliases: [neo soul, pocket soul, ネオ・ソウル]
+- id: shoegaze
+  label: シューゲイズ
+  code: SHOEGAZE
+  group: genre
+  group_label: ジャンル
+  aliases: [shoe gaze, guitar haze, シューゲイザー]
+- id: jungle
+  label: ジャングル
+  code: JUNGLE
+  group: genre
+  group_label: ジャンル
+  aliases: [drum and bass, dnb, 高速ブレイクビーツ]
+- id: bossa-nova
+  label: ボサノヴァ
+  code: BOSSA NOVA
+  group: genre
+  group_label: ジャンル
+  aliases: [bossa nova, bossa, ボサ]
+- id: ambient
+  label: アンビエント
+  code: AMBIENT
+  group: genre
+  group_label: ジャンル
+  aliases: [ambient music, ambient soundscape, 環境音楽]
+- id: afrobeat
+  label: アフロビート
+  code: AFROBEAT
+  group: genre
+  group_label: ジャンル
+  aliases: [afro beat, longform afrobeat, アフロ・ビート]
+- id: ritual
+  label: リチュアル
+  code: RITUAL
+  group: genre
+  group_label: ジャンル
+  aliases: [ritual music, ceremonial music, 儀式音楽]
+- id: alternative-rnb
+  label: オルタナティブR&B
+  code: ALTERNATIVE R&B
+  group: genre
+  group_label: ジャンル
+  aliases: [alternative rnb, "alternative r&b", オルタナR&B]
+- id: swing-jazz
+  label: スウィングジャズ
+  code: SWING JAZZ
+  group: genre
+  group_label: ジャンル
+  aliases: [swing jazz, vocal swing, ジャズボーカル]
+- id: electro-funk
+  label: エレクトロファンク
+  code: ELECTRO FUNK
+  group: genre
+  group_label: ジャンル
+  aliases: [electro funk, electronic funk, シンセファンク]
+- id: contemporary-classical
+  label: 現代音楽
+  code: CONTEMPORARY CLASSICAL
+  group: genre
+  group_label: ジャンル
+  aliases: [contemporary classical, modern classical, 現代クラシック]
+- id: spoken-word
+  label: スポークンワード
+  code: SPOKEN WORD
+  group: genre
+  group_label: ジャンル
+  aliases: [spoken word, narration, 語り]
+- id: minimal-techno
+  label: ミニマルテクノ
+  code: MINIMAL TECHNO
+  group: genre
+  group_label: ジャンル
+  aliases: [minimal techno, stripped techno, ミニマル・テクノ]
+- id: trance-rock
+  label: トランスロック
+  code: TRANCE ROCK
+  group: genre
+  group_label: ジャンル
+  aliases: [trance rock, psychedelic trance rock, トランス・ロック]
+- id: abstract-hip-hop
+  label: アブストラクト・ヒップホップ
+  code: ABSTRACT HIP-HOP
+  group: genre
+  group_label: ジャンル
+  aliases: [abstract hip hop, instrumental hip hop, 抽象ヒップホップ]
+- id: glitch-pop
+  label: グリッチポップ
+  code: GLITCH POP
+  group: genre
+  group_label: ジャンル
+  aliases: [glitch pop, cut-up pop, グリッチポップ]
+- id: jazz-fusion
+  label: ジャズフュージョン
+  code: JAZZ FUSION
+  group: genre
+  group_label: ジャンル
+  aliases: [jazz fusion, fusion jazz, フュージョン]
+- id: noise-punk
+  label: ノイズパンク
+  code: NOISE PUNK
+  group: genre
+  group_label: ジャンル
+  aliases: [noise punk, experimental hardcore, ノイズパンク]
+- id: theatrical-pop
+  label: シアトリカルポップ
+  code: THEATRICAL POP
+  group: genre
+  group_label: ジャンル
+  aliases: [theatrical pop, dark theatrical pop, 劇場型ポップ]
+- id: post-punk
+  label: ポストパンク
+  code: POST-PUNK
+  group: genre
+  group_label: ジャンル
+  aliases: [post punk, dark post-punk, ポストパンク]
+- id: idm
+  label: IDM
+  code: IDM
+  group: genre
+  group_label: ジャンル
+  aliases: [intelligent dance music, experimental electronica, 知的ダンス音楽]
+- id: post-rock
+  label: ポストロック
+  code: POST-ROCK
+  group: genre
+  group_label: ジャンル
+  aliases: [post rock, atmospheric rock, ポストロック]
+- id: chamber-pop
+  label: チェンバーポップ
+  code: CHAMBER POP
+  group: genre
+  group_label: ジャンル
+  aliases: [chamber pop, orchestral pop, 室内楽ポップ]
+- id: minimal-rnb
+  label: ミニマルR&B
+  code: MINIMAL R&B
+  group: genre
+  group_label: ジャンル
+  aliases: [minimal rnb, "negative-space r&b", "ミニマルR&B"]
+- id: drone-rock
+  label: ドローンロック
+  code: DRONE ROCK
+  group: genre
+  group_label: ジャンル
+  aliases: [drone rock, primitive drone rock, ドローンロック]
+- id: spiritual-jazz
+  label: スピリチュアルジャズ
+  code: SPIRITUAL JAZZ
+  group: genre
+  group_label: ジャンル
+  aliases: [spiritual jazz, modal spiritual jazz, スピリチュアルジャズ]
+- id: qawwali
+  label: カッワーリー
+  code: QAWWALI
+  group: genre
+  group_label: ジャンル
+  aliases: [qawwali music, sufi devotional, カッワーリー音楽]
+- id: psychedelic-pop
+  label: サイケデリックポップ
+  code: PSYCHEDELIC POP
+  group: genre
+  group_label: ジャンル
+  aliases: [psychedelic pop, psych pop, サイケポップ]
+- id: deconstructed-trance
+  label: デコンストラクテッド・トランス
+  code: DECONSTRUCTED TRANCE
+  group: genre
+  group_label: ジャンル
+  aliases: [deconstructed trance, kickless trance, 解体トランス]
+- id: krautrock
+  label: クラウトロック
+  code: KRAUTROCK
+  group: genre
+  group_label: ジャンル
+  aliases: [krautrock, motorik rock, クラウトロック]
+- id: slowcore
+  label: スロウコア
+  code: SLOWCORE
+  group: genre
+  group_label: ジャンル
+  aliases: [slowcore, slow core, スロウコア]
+- id: progressive-folk
+  label: プログレッシブフォーク
+  code: PROGRESSIVE FOLK
+  group: genre
+  group_label: ジャンル
+  aliases: [progressive folk, prog folk, プログレッシブ・フォーク]
+- id: electronic-americana
+  label: 電子アメリカーナ
+  code: ELECTRONIC AMERICANA
+  group: genre
+  group_label: ジャンル
+  aliases: [electronic americana, electro americana, エレクトロ・アメリカーナ]
+- id: drone-metal
+  label: ドローンメタル
+  code: DRONE METAL
+  group: genre
+  group_label: ジャンル
+  aliases: [drone metal, doom drone, ドローン・メタル]
+- id: garage-grunge
+  label: ガレージグランジ
+  code: GARAGE GRUNGE
+  group: genre
+  group_label: ジャンル
+  aliases: [garage grunge, raw grunge, ガレージ・グランジ]
+
+- id: vocal
+  label: ボーカルあり
+  group: voice
+  group_label: 歌唱
+  aliases: [vocal, 歌もの, 歌声]
+- id: instrumental
+  label: インスト
+  group: voice
+  group_label: 歌唱
+  aliases: [instrumental, no vocals, ボーカルなし]
+
+- id: electric-piano
+  label: エレピ
+  group: instrument
+  group_label: 楽器
+  aliases: [electric piano, ep, rhodes]
+- id: organ
+  label: オルガン
+  group: instrument
+  group_label: 楽器
+  aliases: [organ, hammond organ, combo organ, distorted organ]
+- id: cutting-guitar
+  label: カッティングギター
+  group: instrument
+  group_label: 楽器
+  aliases: [rhythm guitar, clean guitar, カッティング]
+- id: acoustic-guitar
+  label: 指弾きギター
+  group: instrument
+  group_label: 楽器
+  aliases: [fingerpicked guitar, acoustic guitar, アコギ]
+- id: soft-percussion
+  label: 柔らかい打楽器
+  group: instrument
+  group_label: 楽器
+  aliases: [brushed percussion, brushed snare, ブラシ]
+- id: piano
+  label: ピアノ
+  group: instrument
+  group_label: 楽器
+  aliases: [piano, acoustic piano, grand piano]
+- id: strings
+  label: ストリングス
+  group: instrument
+  group_label: 楽器
+  aliases: [strings, cello, violins, 弦楽器]
+- id: synth-bass
+  label: シンセベース
+  group: instrument
+  group_label: 楽器
+  aliases: [synth bass, bass synth]
+- id: orchestra
+  label: オーケストラ
+  group: instrument
+  group_label: 楽器
+  aliases: [orchestral, brass, horn, 管弦楽]
+- id: muted-trumpet
+  label: ミュートトランペット
+  group: instrument
+  group_label: 楽器
+  aliases: [muted trumpet, single horn, 弱音器付きトランペット]
+- id: fm-synth
+  label: FMシンセ
+  group: instrument
+  group_label: 楽器
+  aliases: [fm keys, sine synth, bell-like synth]
+- id: analog-pad
+  label: アナログパッド
+  group: instrument
+  group_label: 楽器
+  aliases: [analog pad, synth pad, パッドシンセ]
+- id: vibraphone
+  label: ヴィブラフォン
+  group: instrument
+  group_label: 楽器
+  aliases: [vibraphone, vibes, ビブラフォン]
+- id: electric-guitar
+  label: エレキギター
+  group: instrument
+  group_label: 楽器
+  aliases: [electric guitar, clean electric guitar, electric guitars]
+- id: found-sound
+  label: 環境音・物音
+  group: instrument
+  group_label: 楽器
+  aliases: [field recording, found sound, environmental sound, 環境音]
+- id: pedal-steel
+  label: ペダルスティール
+  group: instrument
+  group_label: 楽器
+  aliases: [pedal steel, steel guitar, スティールギター]
+- id: music-box
+  label: オルゴール
+  group: instrument
+  group_label: 楽器
+  aliases: [music box, toy instrument, music-box synth]
+- id: bass-guitar
+  label: ベースギター
+  group: instrument
+  group_label: 楽器
+  aliases: [electric bass, melodic bass, ベース]
+- id: flute
+  label: フルート
+  group: instrument
+  group_label: 楽器
+  aliases: [flute, airy flute, glassy lead]
+- id: voice-ensemble
+  label: 声アンサンブル
+  group: instrument
+  group_label: 楽器
+  aliases: [voice ensemble, unaccompanied voices, vocal-only, 声だけ]
+- id: upright-bass
+  label: コントラバス
+  group: instrument
+  group_label: 楽器
+  aliases: [upright bass, double bass, contrabass, acoustic bass]
+- id: horn-section
+  label: ホーンセクション
+  group: instrument
+  group_label: 楽器
+  aliases: [horn section, brass section, saxophone section, 管楽器セクション]
+- id: saxophone
+  label: サックス
+  group: instrument
+  group_label: 楽器
+  aliases: [saxophone, tenor sax, alto sax, サクソフォン]
+- id: taiko
+  label: 和太鼓
+  group: instrument
+  group_label: 楽器
+  aliases: [taiko, taiko drums, japanese drums, 和太鼓]
+- id: metallic-percussion
+  label: 金属打楽器
+  group: instrument
+  group_label: 楽器
+  aliases: [metallic percussion, metal percussion, gamelan, 金属音]
+- id: tabla
+  label: タブラ
+  group: instrument
+  group_label: 楽器
+  aliases: [tabla, hand drums, タブラ]
+- id: drums
+  label: ドラム
+  group: instrument
+  group_label: 楽器
+  aliases: [drum kit, live drums, acoustic drums, ドラムセット]
+- id: accordion
+  label: アコーディオン
+  group: instrument
+  group_label: 楽器
+  aliases: [accordion, bellows, 蛇腹楽器]
+- id: harpsichord
+  label: チェンバロ
+  group: instrument
+  group_label: 楽器
+  aliases: [harpsichord, cembalo, チェンバロ]
+- id: harp
+  label: ハープ
+  group: instrument
+  group_label: 楽器
+  aliases: [harp, concert harp, ハープ]
+- id: tanpura
+  label: タンプーラ
+  group: instrument
+  group_label: 楽器
+  aliases: [tanpura, tambura drone, タンブーラ]
+- id: prepared-piano
+  label: プリペアドピアノ
+  group: instrument
+  group_label: 楽器
+  aliases: [prepared piano, modified piano, プリペアド・ピアノ]
+- id: harmonium
+  label: ハルモニウム
+  group: instrument
+  group_label: 楽器
+  aliases: [harmonium, reed organ, ハルモニウム]
+- id: drum-machine
+  label: ドラムマシン
+  group: instrument
+  group_label: 楽器
+  aliases: [drum machine, programmed drums, rhythm machine, ドラムマシン]
+- id: sampler
+  label: サンプラー
+  group: instrument
+  group_label: 楽器
+  aliases: [sampler, sampled fragments, sample collage, サンプラー]
+- id: choir-synth
+  label: 合唱シンセ
+  group: instrument
+  group_label: 楽器
+  aliases: [choir synth, synthetic choir, vocal synthesizer, 合唱シンセ]
+
+- id: bright-chorus
+  label: 華やかなサビ
+  group: arrangement
+  group_label: 展開
+  aliases: [wide chorus, bright chorus, サビが広がる]
+- id: natural-room
+  label: 自然な響き
+  group: arrangement
+  group_label: 展開
+  aliases: [natural room, intimate, close vocal]
+- id: gradual-build
+  label: 段階的な盛り上がり
+  group: arrangement
+  group_label: 展開
+  aliases: [gradual build, crescendo, 徐々に盛り上がる]
+- id: even-dynamics
+  label: 穏やかな展開
+  group: arrangement
+  group_label: 展開
+  aliases: [even dynamics, understated, 作業用]
+- id: dynamic-contrast
+  label: 明確な緩急
+  group: arrangement
+  group_label: 展開
+  aliases: [breakdown, dynamic contrast, ビートを抜く]
+- id: recurring-motif
+  label: 反復する旋律
+  group: arrangement
+  group_label: 展開
+  aliases: [recurring motif, melodic motif, モチーフ]
+- id: large-scale
+  label: 大きな展開
+  group: arrangement
+  group_label: 展開
+  aliases: [climax, expansive, 壮大]
+- id: sparse-arrangement
+  label: 余白の多い編成
+  group: arrangement
+  group_label: 展開
+  aliases: [sparse, stripped-down, minimal arrangement, 余白]
+- id: loop-based
+  label: ループ主体
+  group: arrangement
+  group_label: 展開
+  aliases: [loop, loop-first, repetitive, 反復主体]
+- id: unresolved-ending
+  label: 未解決の終わり
+  group: arrangement
+  group_label: 展開
+  aliases: [unresolved, no resolution, unresolved fade, 解決しない終止]
+- id: stereo-motion
+  label: 定位移動
+  group: arrangement
+  group_label: 展開
+  aliases: [stereo movement, spatial panning, moving panorama, 定位]
+- id: subtractive-arrangement
+  label: 減算型構成
+  group: arrangement
+  group_label: 展開
+  aliases: [subtractive arrangement, stem muting, mute and return, 引き算の編成]
+- id: vocal-layering
+  label: 多重ボーカル
+  group: arrangement
+  group_label: 展開
+  aliases: [vocal layering, stacked harmonies, layered harmonies, 声のレイヤー]
+- id: call-response
+  label: コール＆レスポンス
+  group: arrangement
+  group_label: 展開
+  aliases: [call and response, antiphonal, 問答形式]
+- id: tempo-layering
+  label: 速度レイヤー
+  group: arrangement
+  group_label: 展開
+  aliases: [layered tempos, double-time overlay, speed planes, 速度層]
+- id: phase-shift
+  label: 位相ずれ
+  group: arrangement
+  group_label: 展開
+  aliases: [phase shifting, shifting phase, phase drift, 位相変化]
+- id: timbre-morph
+  label: 音色変形
+  group: arrangement
+  group_label: 展開
+  aliases: [timbre morphing, spectral morph, sound identity swap, 音色変化]
+- id: hard-splice
+  label: ハードカット接続
+  group: arrangement
+  group_label: 展開
+  aliases: [hard splice, abrupt section cut, no crossfade, 瞬時切替]
+- id: frequency-scan
+  label: 帯域走査
+  group: arrangement
+  group_label: 展開
+  aliases: [frequency scan, band isolation, spectral scan, 周波数走査]
+- id: irreversible-form
+  label: 不可逆構成
+  group: arrangement
+  group_label: 展開
+  aliases: [irreversible form, no-return structure, one-way form, 戻らない構成]
+- id: role-exchange
+  label: 役割交換
+  group: arrangement
+  group_label: 展開
+  aliases: [role exchange, instrumental role swap, function swap, 機能交換]
+
+- id: swing
+  label: スウィング
+  group: rhythm
+  group_label: リズム
+  aliases: [swing, shuffled, 跳ねる]
+- id: four-on-floor
+  label: 四つ打ち
+  group: rhythm
+  group_label: リズム
+  aliases: [four-on-the-floor, 4つ打ち, 4-on-the-floor]
+- id: minimal-beat
+  label: 最小限のビート
+  group: rhythm
+  group_label: リズム
+  aliases: [minimal beat, light drums, minimal drums, 極小ビート]
+- id: beatless
+  label: ビートレス
+  group: rhythm
+  group_label: リズム
+  aliases: [beatless, no drums, no rhythmic pulse, ドラムなし]
+- id: broken-beat
+  label: ブロークンビート
+  group: rhythm
+  group_label: リズム
+  aliases: [broken beat, glitch beat, irregular percussion]
+- id: sixteenth-groove
+  label: 16分音符グルーヴ
+  group: rhythm
+  group_label: リズム
+  aliases: [16th groove, sixteenth notes, 16分音符]
+- id: straight-groove
+  label: ストレートグルーヴ
+  group: rhythm
+  group_label: リズム
+  aliases: [straight groove, steady eighths, straight eighths]
+- id: laid-back
+  label: レイドバック
+  group: rhythm
+  group_label: リズム
+  aliases: [laid back, behind the beat, 後ノリ]
+- id: free-time
+  label: 自由拍
+  group: rhythm
+  group_label: リズム
+  aliases: [free time, rubato, unmetered, 自由拍]
+- id: two-step
+  label: 2ステップ
+  group: rhythm
+  group_label: リズム
+  aliases: [2-step, two step, uk garage rhythm, 2ステップ]
+- id: polyrhythm
+  label: ポリリズム
+  group: rhythm
+  group_label: リズム
+  aliases: [polyrhythm, polymeter, cross rhythm, 複合リズム]
+- id: odd-meter
+  label: 変拍子
+  group: rhythm
+  group_label: リズム
+  aliases: [odd meter, asymmetric meter, additive meter, 変拍子]
+- id: waltz
+  label: 三拍子
+  group: rhythm
+  group_label: リズム
+  aliases: [waltz, three-four, "3/4", 三拍子]
+- id: expanding-meter
+  label: 拡張拍子
+  group: rhythm
+  group_label: リズム
+  aliases: [expanding meter, additive bar length, growing bar, 拍数拡張]

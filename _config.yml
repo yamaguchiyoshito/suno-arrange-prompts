@@ -1,0 +1,20 @@
+title: Suno アレンジプロンプト
+description: 楽器、テンポ、曲の展開から探せるSuno向けアレンジプロンプト集
+lang: ja
+timezone: Asia/Tokyo
+
+collections:
+  prompts:
+    output: false
+
+strict_front_matter: true
+liquid:
+  error_mode: strict
+
+exclude:
+  - Gemfile
+  - Gemfile.lock
+  - README.md
+  - scripts
+  - templates
+  - vendor

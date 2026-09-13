@@ -1,0 +1,70 @@
+{% assign prompt = include.prompt %}
+{% capture sequence %}{% if include.position < 10 %}0{% endif %}{{ include.position }}{% endcapture %}
+{% if prompt.vocals == 'instrumental' %}
+  {% assign voice_label = 'インスト' %}
+{% else %}
+  {% assign voice_label = 'ボーカルあり' %}
+{% endif %}
+{% if prompt.bpm %}
+  {% capture tempo_label %}{{ prompt.bpm }} BPM{% endcapture %}
+{% elsif prompt.bpm_range %}
+  {% capture tempo_label %}{{ prompt.bpm_range.first }}–{{ prompt.bpm_range.last }} BPM{% endcapture %}
+{% else %}
+  {% assign tempo_label = 'BPM指定なし' %}
+{% endif %}
+{% assign category_label = '' %}
+{% for tag_id in prompt.tags %}
+  {% assign taxonomy_tag = site.data.tags | where: 'id', tag_id | first %}
+  {% if taxonomy_tag.group == 'genre' %}{% assign category_label = taxonomy_tag.code %}{% endif %}
+{% endfor %}
+{% capture searchable_text %}
+  {{ prompt.title }} {{ category_label }} {{ prompt.description }} {{ tempo_label | strip }}
+  {{ prompt.content | remove: '```text' | remove: '```' }}
+  {% for tag_id in prompt.tags %}
+    {% assign taxonomy_tag = site.data.tags | where: 'id', tag_id | first %}
+    {{ taxonomy_tag.label }} {{ taxonomy_tag.aliases | join: ' ' }} {{ taxonomy_tag.id }}
+  {% endfor %}
+{% endcapture %}
+<article
+  class="card"
+  id="{{ prompt.slug }}"
+  aria-labelledby="title-{{ prompt.prompt_id }}"
+  data-prompt-card
+  data-prompt-id="{{ prompt.prompt_id }}"
+  data-tags="{{ prompt.tags | join: ' ' }}"
+  data-search="{{ searchable_text | strip_html | strip_newlines | escape }}"
+>
+  <div class="card-head">
+    <div class="card-meta">
+      <span class="track-no">{{ sequence | strip }} / {{ category_label }}</span>
+      <span class="tempo">{{ tempo_label | strip }} · {{ voice_label }}</span>
+    </div>
+    <h3 id="title-{{ prompt.prompt_id }}">{{ prompt.title }}</h3>
+    <p class="description">{{ prompt.description }}</p>
+    <div class="tags" aria-label="{{ prompt.title }}のタグ">
+      {% for tag_id in prompt.tags %}
+        {% assign taxonomy_tag = site.data.tags | where: 'id', tag_id | first %}
+        <a
+          class="tag"
+          href="{{ '/' | relative_url }}?tag={{ taxonomy_tag.id | url_encode }}#filter"
+          data-card-tag="{{ taxonomy_tag.id }}"
+          data-card-tag-group="{{ taxonomy_tag.group }}"
+        ><span aria-hidden="true">#</span>{{ taxonomy_tag.label }}</a>
+      {% endfor %}
+    </div>
+  </div>
+  <div class="prompt-area">
+    <span class="prompt-label">STYLE PROMPT</span>
+    <div class="prompt-text" id="prompt-{{ prompt.prompt_id }}" lang="en">{{ prompt.content | markdownify }}</div>
+  </div>
+  <div class="card-foot">
+    <p class="tip"><strong>{{ prompt.tip_label }}：</strong>{{ prompt.tip }}</p>
+    <button
+      class="copy"
+      type="button"
+      data-copy-target="prompt-{{ prompt.prompt_id }}"
+      aria-label="{{ prompt.title }}のプロンプトをコピー"
+      hidden
+    >プロンプトをコピー</button>
+  </div>
+</article>

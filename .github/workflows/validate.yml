@@ -1,0 +1,30 @@
+name: Validate prompt catalog
+
+on:
+  pull_request:
+  push:
+    branches: [main]
+
+permissions:
+  contents: read
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Set up Ruby
+        uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: '3.3'
+      - name: Install Jekyll dependencies
+        run: bundle install --jobs 4 --retry 3
+      - name: Validate Markdown and taxonomy
+        run: ruby scripts/validate_content.rb
+      - name: Check catalog JavaScript
+        run: node --check assets/js/catalog.js
+      - name: Build with a project-site base path
+        run: bundle exec jekyll build --baseurl /suno-arrange-prompts
+      - name: Verify generated site
+        run: ruby scripts/verify_site.rb _site /suno-arrange-prompts

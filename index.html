@@ -1,0 +1,126 @@
+---
+layout: default
+title: Suno アレンジプロンプト | Arrange Notes
+description: 楽器、テンポ、曲の展開をタグとキーワードで絞り込める、Suno向けアレンジプロンプト集です。
+---
+{% assign published_prompts = site.prompts | where: 'status', 'published' | sort: 'order' %}
+<a class="skip" href="#main">本文へ移動</a>
+<div class="page-shell" aria-hidden="true"></div>
+<div class="wrap">
+  <header class="topbar">
+    <a class="wordmark" href="#main" lang="en">ARRANGE<span> / </span>NOTES</a>
+    <nav aria-label="ページ内ナビゲーション">
+      <a class="filter-nav" href="#filter">絞り込む</a>
+      <a href="#prompts">プロンプト集</a>
+      <a href="#guide">使い方</a>
+    </nav>
+  </header>
+
+  <main id="main">
+    <section class="intro" aria-labelledby="page-title">
+      <div>
+        <p class="eyebrow" lang="en">FOR SUNO · ARRANGEMENT PROMPTS</p>
+        <h1 id="page-title">音の設計図を、<br><em>探して持ち出す。</em></h1>
+      </div>
+      <p class="intro-copy">楽器、リズム、曲の展開から選べるSuno向けアレンジプロンプト。現在<strong>{{ published_prompts.size }}件</strong>を公開しています。</p>
+    </section>
+
+    <aside class="quickstart" aria-label="入力する場所">
+      <span class="quickstart-index" aria-hidden="true">→</span>
+      <strong>貼り付ける場所</strong>
+      <p>SunoのCreate画面で、スタイルを指定できる詳細モードの<strong>Style／Styles欄</strong>に入力します。歌詞はLyrics欄へ分けて入力してください。</p>
+    </aside>
+
+    <section class="filter-panel" id="filter" aria-labelledby="filter-heading" data-catalog>
+      <div class="filter-heading-row">
+        <div>
+          <p class="section-kicker" lang="en">CATALOG FILTER</p>
+          <h2 id="filter-heading">欲しい音から絞り込む</h2>
+        </div>
+        <output id="result-count" class="result-count" for="prompt-search" aria-live="polite">{{ published_prompts.size }} / {{ published_prompts.size }} 件</output>
+      </div>
+
+      <div class="search-row" role="search">
+        <label for="prompt-search">キーワード</label>
+        <div class="search-control">
+          <span aria-hidden="true">⌕</span>
+          <input id="prompt-search" type="search" inputmode="search" autocomplete="off" placeholder="例：ピアノ、静か、bridge、84 BPM">
+        </div>
+        <button class="clear" type="button" data-clear-filter disabled>条件をクリア</button>
+      </div>
+
+      <div class="filter-groups" aria-describedby="filter-help">
+        {% assign tag_groups = site.data.tags | group_by: 'group' %}
+        {% for tag_group in tag_groups %}
+          <fieldset class="filter-group">
+            <legend>{{ tag_group.items.first.group_label }}</legend>
+            <div class="filter-options">
+              {% for taxonomy_tag in tag_group.items %}
+                {% assign tag_usage_count = 0 %}
+                {% for prompt in published_prompts %}
+                  {% if prompt.tags contains taxonomy_tag.id %}{% assign tag_usage_count = tag_usage_count | plus: 1 %}{% endif %}
+                {% endfor %}
+                {% if tag_usage_count > 0 %}
+                  <button
+                    type="button"
+                    class="filter-chip"
+                    data-tag="{{ taxonomy_tag.id }}"
+                    data-tag-group="{{ taxonomy_tag.group }}"
+                    aria-pressed="false"
+                  ><span>{{ taxonomy_tag.label }}</span><span class="facet-count" aria-label="{{ tag_usage_count }}件">{{ tag_usage_count }}</span></button>
+                {% endif %}
+              {% endfor %}
+            </div>
+          </fieldset>
+        {% endfor %}
+      </div>
+      <p class="filter-help" id="filter-help">同じ分類ではOR、異なる分類ではAND検索です。例：「シティポップ または Lo-fi」かつ「エレピ」。選択条件はURLで共有できます。</p>
+    </section>
+
+    <section id="prompts" aria-labelledby="prompts-heading">
+      <div class="section-head">
+        <div>
+          <p class="section-kicker" lang="en">PROMPT ARCHIVE</p>
+          <h2 id="prompts-heading">アレンジを選ぶ</h2>
+        </div>
+        <p>Markdown原稿から自動生成 · 音源生成による検証は未実施</p>
+      </div>
+      <div class="grid" id="prompt-grid">
+        {% for prompt in published_prompts %}
+          {% include prompt-card.html prompt=prompt position=forloop.index %}
+        {% endfor %}
+      </div>
+      <div class="no-results" data-no-results hidden>
+        <p class="no-results-mark" aria-hidden="true">0</p>
+        <h3>条件に合うプロンプトがありません</h3>
+        <p>タグを減らすか、キーワードを短くしてください。</p>
+        <button type="button" class="clear clear-large" data-clear-filter>すべての条件を解除</button>
+      </div>
+    </section>
+
+    <section class="guide" id="guide" aria-labelledby="guide-heading">
+      <div class="guide-title">
+        <p class="section-kicker" lang="en">QUICK GUIDE</p>
+        <h2 id="guide-heading">初めて使うときは</h2>
+      </div>
+      <ol class="steps">
+        <li><h3>スタイル欄に貼り付ける</h3><p>例文をコピーし、SunoのStyle／Styles欄へ貼り付けます。歌詞とスタイルを別々に指定できるモードを選びます。</p></li>
+        <li><h3>歌詞と歌声を設定する</h3><p>歌ものはLyrics欄に歌詞を入力します。インストはInstrumentalを選びます。</p></li>
+        <li><h3>聴いて、一点ずつ変える</h3><p>生成後は楽器、サビの広がり、終わり方を確認します。変えたい英文だけを書き換えると比較しやすくなります。</p></li>
+      </ol>
+      <details>
+        <summary>歌詞の区切りと、プロンプトの合わせ方</summary>
+        <p>歌詞には<code>[Verse]</code>（Aメロ）、<code>[Chorus]</code>（サビ）、<code>[Bridge]</code>（中間部）などの区切りを付けます。プロンプトで「bridgeを静かにする」と書く場合は、歌詞にも対応する区間を用意してください。</p>
+        <p>英語のスタイル指示をLyrics欄へ貼ると、歌詞として扱われる可能性があります。</p>
+      </details>
+      <p class="notice">掲載例は新規の楽曲生成向けです。BPM、楽器、曲構成は生成への指示であり、結果を固定する設定ではありません。</p>
+      <p class="notice">使い方の参考：<a href="https://suno.com/hub/how-to-make-a-song" target="_blank" rel="noopener noreferrer">Suno公式「How to Make a Song with Suno」</a>。掲載プロンプトと調整案は独自に作成したもので、公式の推奨例ではありません。</p>
+    </section>
+  </main>
+
+  <footer>
+    <p lang="en">ARRANGE / NOTES · Independent prompt collection</p>
+    <p>Suno非公式 · Markdown driven</p>
+  </footer>
+</div>
+<div id="copy-status" role="status" aria-live="polite" aria-atomic="true"></div>
