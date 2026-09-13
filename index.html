@@ -31,72 +31,91 @@ description: 楽器、テンポ、曲の展開をタグとキーワードで絞�
       <p>SunoのCreate画面で、スタイルを指定できる詳細モードの<strong>Style／Styles欄</strong>に入力します。歌詞はLyrics欄へ分けて入力してください。</p>
     </aside>
 
-    <section class="filter-panel" id="filter" aria-labelledby="filter-heading" data-catalog>
-      <div class="filter-heading-row">
-        <div>
-          <p class="section-kicker" lang="en">CATALOG FILTER</p>
-          <h2 id="filter-heading">欲しい音から絞り込む</h2>
+    <div class="catalog" data-catalog>
+      <div class="search-bar" id="search-bar" role="search" aria-label="プロンプト検索">
+        <div class="search-bar-main">
+          <div class="search-control">
+            <span aria-hidden="true">⌕</span>
+            <label class="visually-hidden" for="prompt-search">キーワード</label>
+            <input id="prompt-search" type="search" inputmode="search" autocomplete="off" placeholder="例：ピアノ、静か、bridge、84">
+          </div>
+          <output id="result-count" class="result-count" for="prompt-search" aria-live="polite">{{ published_prompts.size }} / {{ published_prompts.size }} 件</output>
+          <a class="tag-panel-link" href="#filter">タグ<span class="selected-count" data-selected-count hidden>0</span></a>
+          <button class="clear" type="button" data-clear-filter disabled>クリア</button>
         </div>
-        <output id="result-count" class="result-count" for="prompt-search" aria-live="polite">{{ published_prompts.size }} / {{ published_prompts.size }} 件</output>
+        <ul class="active-filters" data-active-filters aria-label="選択中のタグ" hidden></ul>
       </div>
 
-      <div class="search-row" role="search">
-        <label for="prompt-search">キーワード</label>
-        <div class="search-control">
-          <span aria-hidden="true">⌕</span>
-          <input id="prompt-search" type="search" inputmode="search" autocomplete="off" placeholder="例：ピアノ、静か、bridge、84 BPM">
+      <section class="filter-panel" id="filter" aria-labelledby="filter-heading">
+        <div class="filter-heading-row">
+          <div>
+            <p class="section-kicker" lang="en">CATALOG FILTER</p>
+            <h2 id="filter-heading">欲しい音から絞り込む</h2>
+          </div>
+          <p class="filter-lead">分類を開いてタグを選びます。件数の多い順に並んでいます。</p>
         </div>
-        <button class="clear" type="button" data-clear-filter disabled>条件をクリア</button>
-      </div>
 
-      <div class="filter-groups" aria-describedby="filter-help">
-        {% assign tag_groups = site.data.tags | group_by: 'group' %}
-        {% for tag_group in tag_groups %}
-          <fieldset class="filter-group">
-            <legend>{{ tag_group.items.first.group_label }}</legend>
-            <div class="filter-options">
+        <div class="filter-groups" aria-describedby="filter-help">
+          {% assign tag_groups = site.data.tags | group_by: 'group' %}
+          {% for tag_group in tag_groups %}
+            {% assign group_tag_count = 0 %}
+            {% capture group_chips %}
               {% for taxonomy_tag in tag_group.items %}
                 {% assign tag_usage_count = 0 %}
                 {% for prompt in published_prompts %}
                   {% if prompt.tags contains taxonomy_tag.id %}{% assign tag_usage_count = tag_usage_count | plus: 1 %}{% endif %}
                 {% endfor %}
                 {% if tag_usage_count > 0 %}
+                  {% assign group_tag_count = group_tag_count | plus: 1 %}
                   <button
                     type="button"
                     class="filter-chip"
                     data-tag="{{ taxonomy_tag.id }}"
                     data-tag-group="{{ taxonomy_tag.group }}"
+                    data-tag-count="{{ tag_usage_count }}"
                     aria-pressed="false"
                   ><span>{{ taxonomy_tag.label }}</span><span class="facet-count" aria-label="{{ tag_usage_count }}件">{{ tag_usage_count }}</span></button>
                 {% endif %}
               {% endfor %}
-            </div>
-          </fieldset>
-        {% endfor %}
-      </div>
-      <p class="filter-help" id="filter-help">同じ分類ではOR、異なる分類ではAND検索です。例：「シティポップ または Lo-fi」かつ「エレピ」。選択条件はURLで共有できます。</p>
-    </section>
-
-    <section id="prompts" aria-labelledby="prompts-heading">
-      <div class="section-head">
-        <div>
-          <p class="section-kicker" lang="en">PROMPT ARCHIVE</p>
-          <h2 id="prompts-heading">アレンジを選ぶ</h2>
+            {% endcapture %}
+            <details class="filter-group" data-filter-group="{{ tag_group.name }}">
+              <summary>
+                <span class="filter-group-name">{{ tag_group.items.first.group_label }}</span>
+                <span class="filter-group-selected" data-group-selected hidden></span>
+                <span class="filter-group-total">{{ group_tag_count }}種</span>
+              </summary>
+              <div class="filter-options">{{ group_chips }}</div>
+            </details>
+          {% endfor %}
         </div>
-        <p>Markdown原稿から自動生成 · 音源生成による検証は未実施</p>
-      </div>
-      <div class="grid" id="prompt-grid">
-        {% for prompt in published_prompts %}
-          {% include prompt-card.html prompt=prompt position=forloop.index %}
-        {% endfor %}
-      </div>
-      <div class="no-results" data-no-results hidden>
-        <p class="no-results-mark" aria-hidden="true">0</p>
-        <h3>条件に合うプロンプトがありません</h3>
-        <p>タグを減らすか、キーワードを短くしてください。</p>
-        <button type="button" class="clear clear-large" data-clear-filter>すべての条件を解除</button>
-      </div>
-    </section>
+        <p class="filter-help" id="filter-help">同じ分類ではOR、異なる分類ではAND検索です。例：「シティポップ または Lo-fi」かつ「エレピ」。キーワードは日本語でも英語でも探せます。選択条件はURLで共有できます。</p>
+      </section>
+
+      <section id="prompts" aria-labelledby="prompts-heading">
+        <div class="section-head">
+          <div>
+            <p class="section-kicker" lang="en">PROMPT ARCHIVE</p>
+            <h2 id="prompts-heading">アレンジを選ぶ</h2>
+          </div>
+          <p>Markdown原稿から自動生成 · 音源生成による検証は未実施</p>
+        </div>
+        <div class="grid" id="prompt-grid">
+          {% for prompt in published_prompts %}
+            {% include prompt-card.html prompt=prompt position=forloop.index %}
+          {% endfor %}
+        </div>
+        <div class="show-more" data-show-more hidden>
+          <p class="show-more-note" data-show-more-note></p>
+          <button type="button" class="clear clear-large" data-show-more-button>さらに表示</button>
+        </div>
+        <div class="no-results" data-no-results hidden>
+          <p class="no-results-mark" aria-hidden="true">0</p>
+          <h3>条件に合うプロンプトがありません</h3>
+          <p>タグを減らすか、キーワードを短くしてください。</p>
+          <button type="button" class="clear clear-large" data-clear-filter>すべての条件を解除</button>
+        </div>
+      </section>
+    </div>
 
     <section class="guide" id="guide" aria-labelledby="guide-heading">
       <div class="guide-title">
@@ -124,3 +143,4 @@ description: 楽器、テンポ、曲の展開をタグとキーワードで絞�
   </footer>
 </div>
 <div id="copy-status" role="status" aria-live="polite" aria-atomic="true"></div>
+<script type="application/json" id="search-synonyms">{{ site.data.search_synonyms | jsonify }}</script>
