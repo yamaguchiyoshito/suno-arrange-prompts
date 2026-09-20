@@ -15,7 +15,7 @@ REQUIRED_FIELDS = %w[
   status order created_at updated_at
 ].freeze
 ALLOWED_FIELDS = (REQUIRED_FIELDS + %w[bpm_range]).freeze
-ALLOWED_GROUPS = %w[producer source genre voice instrument arrangement rhythm].freeze
+ALLOWED_GROUPS = %w[artist producer source genre voice instrument arrangement rhythm].freeze
 ALLOWED_STATUS = %w[published draft archived].freeze
 ALLOWED_VOCALS = %w[vocal instrumental].freeze
 MAX_PROMPT_LENGTH = 1000

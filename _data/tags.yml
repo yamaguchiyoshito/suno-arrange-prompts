@@ -1,6 +1,42 @@
 # Markdownにはlabelではなく不変のidを記述します。
 # 表示名の変更はこのファイルだけで行い、既存idは再利用しません。
 
+- id: gigi-masin
+  label: Gigi Masin
+  group: artist
+  group_label: 着想元アーティスト
+  aliases: [ジジ・マシン, ジジマシン, ジジ・マジン, ジジマジン]
+- id: namedaruma
+  label: 舐達麻
+  group: artist
+  group_label: 着想元アーティスト
+  aliases: [NAMEDARUMA, 舐達磨, なめだるま, ナメダルマ]
+
+- id: rascal
+  label: Rascal
+  group: producer
+  group_label: 着想元プロデューサー
+  aliases: [ラスカル]
+- id: green-assassin-dollar
+  label: GREEN ASSASSIN DOLLAR
+  group: producer
+  group_label: 着想元プロデューサー
+  aliases: [GAD, グリーン・アサシン・ダラー, グリーンアサシンダラー]
+- id: punpee
+  label: PUNPEE
+  group: producer
+  group_label: 着想元プロデューサー
+  aliases: [パンピー]
+- id: vava
+  label: VaVa
+  group: producer
+  group_label: 着想元プロデューサー
+  aliases: [ヴァヴァ]
+- id: cosa
+  label: C.O.S.A.
+  group: producer
+  group_label: 着想元プロデューサー
+  aliases: [COSA, コーサ]
 - id: stuts
   label: STUTS
   group: producer
